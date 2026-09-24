@@ -1,0 +1,71 @@
+/* ---------------------------------------------------------------------------
+   ComicCraft frontend stylesheet source.
+
+   Everything that used to live in the inline <style> block is preserved here
+   verbatim, plus:
+     * local @font-face declarations (no Google Fonts network call)
+     * the fixed full-viewport video hero background
+
+   Compiled offline with:  npm run build:css
+   Output:                 assets/vendor/tailwind.css
+   --------------------------------------------------------------------------- */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Self-hosted fonts (replaces fonts.googleapis.com) -------------------- */
+@import "./fonts.css";
+
+/* --- Application theme --------------------------------------------------- */
+:root{--bg:#0f172a;--card:#1e293b;--ink:#f8fafc;--muted:#a9b8cf;--line:#394660;--primary:#6c63ff;--coral:#ff6b6b;--yellow:#ffd93d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background-color:transparent;font-family:"DM Sans",sans-serif}
+body.light-mode{--bg:#eef1fb;--card:#ffffff;--ink:#17233d;--muted:#52627d;--line:#cdd5e5}
+body.light-mode .site-header,body.light-mode .glass{background:rgba(255,255,255,.88)}
+.app-shell{width:100%;min-height:100%;overflow:hidden;background:radial-gradient(circle at 85% 7%,rgba(108,99,255,.18),transparent 29%),radial-gradient(circle at 8% 31%,rgba(255,107,107,.08),transparent 28%),var(--bg)}
+.site-header{background:rgba(15,23,42,.86);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.glass{background:rgba(30,41,59,.86);border:1px solid var(--line);box-shadow:0 22px 65px rgba(0,0,0,.14);backdrop-filter:blur(18px)}
+.display{font-family:Fraunces,serif;letter-spacing:-.045em;line-height:1.08}
+.muted{color:var(--muted)}.ink-line{border-color:var(--line)}.surface{background:var(--card)}
+.primary-btn,.secondary-btn,.quiet-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:13px;font-weight:700;transition:transform .2s,filter .2s,background .2s;cursor:pointer}
+.primary-btn:hover,.secondary-btn:hover,.quiet-btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.primary-btn{background:var(--primary);color:white;padding:.85rem 1.25rem;box-shadow:0 9px 28px rgba(108,99,255,.26)}
+.secondary-btn{background:var(--card);color:var(--ink);padding:.8rem 1.15rem;border:1px solid var(--line)}
+.quiet-btn{color:var(--muted);padding:.55rem .7rem}.quiet-btn:hover{color:var(--ink)}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+input,textarea,select{background:rgba(15,23,42,.65);border:1px solid var(--line);color:#f8fafc;border-radius:12px;padding:.8rem .9rem;width:100%;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--primary)}
+input::placeholder,textarea::placeholder{color:#8290aa}select option{background:#1e293b}
+.field-label{display:block;font-weight:700;margin-bottom:.45rem;color:var(--ink)}
+.nav-link{color:var(--muted);border-radius:10px;padding:.55rem .75rem;font-weight:700;white-space:nowrap}
+.nav-link:hover,.nav-link.active{color:var(--ink);background:rgba(108,99,255,.2)}
+.view[hidden],.hidden-force{display:none!important}
+.halftone{background-image:radial-gradient(rgba(255,255,255,.13) 1px,transparent 1px);background-size:14px 14px}
+.comic-frame{border:4px solid #0a1020;box-shadow:7px 7px 0 var(--primary);overflow:hidden}
+.photo{object-fit:cover;width:100%;height:100%}
+.speech{background:#fff;color:#15203a;border:2px solid #10182d;border-radius:22px 22px 22px 5px;padding:.8rem 1rem;font-weight:800;box-shadow:4px 4px 0 #10182d}
+.tag{border:1px solid rgba(108,99,255,.5);background:rgba(108,99,255,.17);color:#bbb7ff;border-radius:999px;padding:.3rem .7rem;font-size:.75rem;font-weight:800}
+.eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:.72rem;font-weight:800;color:var(--yellow)}
+.spark{animation:float 5s ease-in-out infinite}@keyframes float{50%{transform:translateY(-12px) rotate(5deg)}}
+.pulse-glow{animation:glow 2s ease-in-out infinite}@keyframes glow{50%{box-shadow:0 0 38px rgba(108,99,255,.7)}}
+.appear{animation:rise .5s both}@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.loading-bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}.loading-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--coral));transition:width .3s}
+.reader-card:nth-child(even) .reader-photo{object-position:70% center}
+.reader-card:nth-child(odd) .reader-photo{object-position:40% center}
+.toast{position:fixed;right:1rem;bottom:1rem;z-index:90;max-width:350px;background:#273755;color:white;border:1px solid #697596;border-left:4px solid var(--yellow);border-radius:13px;padding:1rem 1.15rem;box-shadow:0 15px 40px #0008}
+.burst{background:radial-gradient(circle,rgba(255,217,61,.18),transparent 60%);animation:glow 2.5s ease-in-out infinite}
+
+/* --- Fixed video hero background ----------------------------------------- */
+/* The video fills the viewport, never scrolls, and sits behind every view.   */
+.hero-video-bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;pointer-events:none;background:#0f172a}
+.hero-video-scrim{position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(rgba(15,23,42,var(--hero-scrim,.72)),rgba(15,23,42,var(--hero-scrim-end,.92)))}
+body.light-mode .hero-video-scrim{--hero-scrim:.55;--hero-scrim-end:.78}
+/* Every piece of real content is the overlay above the video. */
+.app-shell,.site-header,main,footer{position:relative;z-index:0}
+/* Let the video show through instead of the opaque app-shell gradient. */
+.hero-active .app-shell{background:transparent}
+.hero-video-hidden .hero-video-bg,.hero-video-hidden .hero-video-scrim{display:none}
+
+@media(max-width:767px){.mobile-links{display:none}.mobile-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;padding:1rem;background:var(--bg);border-bottom:1px solid var(--line)}.reader-actions{overflow-x:auto}.reader-actions button{white-space:nowrap}}
+@media(min-width:768px){.mobile-trigger{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.hero-video-bg{display:none}}

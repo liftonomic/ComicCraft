@@ -1,0 +1,73 @@
+# --- Secrets & local config -------------------------------------------------
+# Never commit credentials. `backend/.env` is git-ignored — this template is
+# what gets committed instead. Copy it, then fill in your real values.
+backend/.env
+backend/.env.*
+!backend/.env.example
+.env
+.env.*
+!.env.example
+
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# --- Node (frontend build-only tooling) -------------------------------------
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm/
+.pnpm-store/
+
+# --- Runtime output (generated comics, images, PDFs) ------------------------
+backend/generated/
+*.log
+logs/
+
+# --- Editors & OS -----------------------------------------------------------
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json.example
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Scratch / one-off helpers ----------------------------------------------
+# One-off patch scripts and temporary probes left over from development.
+_patch*.py
+_*.py
+!backend/app/**/*.py
+!backend/tests/**/*.py
+
+# --- Test artifacts ---------------------------------------------------------
+test_out.txt
+smoke_out.txt
+server_out.log
+server_err.log

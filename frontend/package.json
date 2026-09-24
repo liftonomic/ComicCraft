@@ -1,0 +1,13 @@
+{
+  "name": "comiccraft-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build-only tooling for the ComicCraft frontend. The shipped page is a static index.html and never requires Node at runtime.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/vendor/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./assets/vendor/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

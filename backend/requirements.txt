@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-dotenv
+httpx
+python-multipart
+
+google-genai
+
+Pillow
+reportlab
+
+aiofiles

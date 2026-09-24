@@ -1,60 +1,26 @@
 <!doctype html>
-<html lang="en"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260924-05-f84ad47","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/83d6dfdadcd4750a.telemetry_sdk.js" integrity="sha512-XS4Dvzp6vbagZS9vFErihvr8aO3S0tH78KWUefn06fmL4WYqryBtZj/IOLITYj7dFA4gPVvPg1W/JB1DK3uLNQ=="></script>
+<html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ComicCraft — AI Comic Story Creator</title>
-  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#0f172a;--card:#1e293b;--ink:#f8fafc;--muted:#a9b8cf;--line:#394660;--primary:#6c63ff;--coral:#ff6b6b;--yellow:#ffd93d}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--bg);font-family:"DM Sans",sans-serif}
-    body.light-mode{--bg:#eef1fb;--card:#ffffff;--ink:#17233d;--muted:#52627d;--line:#cdd5e5}
-    body.light-mode .site-header,body.light-mode .glass{background:rgba(255,255,255,.88)}
-    .app-shell{width:100%;min-height:100%;overflow:hidden;background:radial-gradient(circle at 85% 7%,rgba(108,99,255,.18),transparent 29%),radial-gradient(circle at 8% 31%,rgba(255,107,107,.08),transparent 28%),var(--bg)}
-    .site-header{background:rgba(15,23,42,.86);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
-    .glass{background:rgba(30,41,59,.86);border:1px solid var(--line);box-shadow:0 22px 65px rgba(0,0,0,.14);backdrop-filter:blur(18px)}
-    .display{font-family:Fraunces,serif;letter-spacing:-.045em;line-height:1.08}
-    .muted{color:var(--muted)}.ink-line{border-color:var(--line)}.surface{background:var(--card)}
-    .primary-btn,.secondary-btn,.quiet-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;border-radius:13px;font-weight:700;transition:transform .2s,filter .2s,background .2s;cursor:pointer}
-    .primary-btn:hover,.secondary-btn:hover,.quiet-btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
-    .primary-btn{background:var(--primary);color:white;padding:.85rem 1.25rem;box-shadow:0 9px 28px rgba(108,99,255,.26)}
-    .secondary-btn{background:var(--card);color:var(--ink);padding:.8rem 1.15rem;border:1px solid var(--line)}
-    .quiet-btn{color:var(--muted);padding:.55rem .7rem}.quiet-btn:hover{color:var(--ink)}
-    button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
-    input,textarea,select{background:rgba(15,23,42,.65);border:1px solid var(--line);color:#f8fafc;border-radius:12px;padding:.8rem .9rem;width:100%;outline:none}
-    input:focus,textarea:focus,select:focus{border-color:var(--primary)}
-    input::placeholder,textarea::placeholder{color:#8290aa}select option{background:#1e293b}
-    .field-label{display:block;font-weight:700;margin-bottom:.45rem;color:var(--ink)}
-    .nav-link{color:var(--muted);border-radius:10px;padding:.55rem .75rem;font-weight:700;white-space:nowrap}
-    .nav-link:hover,.nav-link.active{color:var(--ink);background:rgba(108,99,255,.2)}
-    .view[hidden],.hidden-force{display:none!important}
-    .halftone{background-image:radial-gradient(rgba(255,255,255,.13) 1px,transparent 1px);background-size:14px 14px}
-    .comic-frame{border:4px solid #0a1020;box-shadow:7px 7px 0 var(--primary);overflow:hidden}
-    .photo{object-fit:cover;width:100%;height:100%}
-    .speech{background:#fff;color:#15203a;border:2px solid #10182d;border-radius:22px 22px 22px 5px;padding:.8rem 1rem;font-weight:800;box-shadow:4px 4px 0 #10182d}
-    .tag{border:1px solid rgba(108,99,255,.5);background:rgba(108,99,255,.17);color:#bbb7ff;border-radius:999px;padding:.3rem .7rem;font-size:.75rem;font-weight:800}
-    .eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:.72rem;font-weight:800;color:var(--yellow)}
-    .spark{animation:float 5s ease-in-out infinite}@keyframes float{50%{transform:translateY(-12px) rotate(5deg)}}
-    .pulse-glow{animation:glow 2s ease-in-out infinite}@keyframes glow{50%{box-shadow:0 0 38px rgba(108,99,255,.7)}}}
-    .appear{animation:rise .5s both}@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-    .loading-bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}.loading-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--coral));transition:width .3s}
-    .reader-card:nth-child(even) .reader-photo{object-position:70% center}
-    .reader-card:nth-child(odd) .reader-photo{object-position:40% center}
-    .toast{position:fixed;right:1rem;bottom:1rem;z-index:90;max-width:350px;background:#273755;color:white;border:1px solid #697596;border-left:4px solid var(--yellow);border-radius:13px;padding:1rem 1.15rem;box-shadow:0 15px 40px #0008}
-    .burst{background:radial-gradient(circle,rgba(255,217,61,.18),transparent 60%);animation:glow 2.5s ease-in-out infinite}
-    @media(max-width:767px){.mobile-links{display:none}.mobile-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;padding:1rem;background:var(--bg);border-bottom:1px solid var(--line)}.reader-actions{overflow-x:auto}.reader-actions button{white-space:nowrap}}
-    @media(min-width:768px){.mobile-trigger{display:none}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
-  <script src="/_sdk/8de366929c5f3b48.data_sdk.js" type="text/javascript" integrity="sha512-TyQ8k8cZj66xe/aENmn6RyZpdOFZXbAo5+KBG3PeFM+Q4qMTHU8xAqmq4ADClNfPrstgQYV6OzZHwLTnElzB2g=="></script>
-  <script src="/_sdk/c90249f316bbe621.editing_sdk.js" type="text/javascript" integrity="sha512-cd4ICwG+3hl1AqLrCysr9GopLZ+2Cyjo2KMofj11Ys31LqLmkNEJhOQqYCwg6Nakgg+jlZ2JIdhM6PxWUR0zsg=="></script>
-  <script src="/_sdk/765e1fea0cec97ce.resizing_sdk.js" type="text/javascript" integrity="sha512-IRTJnqww0+HQ5V/LlWEQrlD5SrYHaVvaeVoNe8HYQXoaguzUGheSd9+n9s6WOgaTcEH0g37DuINHZ9aqfzWjlw=="></script>
+
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+
+  <script src="assets/vendor/lucide.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="assets/vendor/tailwind.css">
+
+
+
  </head>
- <body data-template-id="__page-root" style="background: rgb(15, 23, 42);">
+ <body class="hero-active" data-template-id="__page-root">
+  <!-- Fixed full-viewport background video. Everything else is an overlay on top of it. -->
+  <video class="hero-video-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+   <source src="assets/hero-animation.mp4" type="video/mp4">
+  </video>
+  <div class="hero-video-scrim" aria-hidden="true"></div>
+
   <div class="app-shell">
-   <header data-template-id="site-header" class="site-header canva-header w-full" style="background: rgb(15, 23, 42);">
+   <header data-template-id="site-header" class="site-header canva-header w-full" style="background: rgba(15, 23, 42, 0.62);">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3"><button type="button" class="flex items-center gap-2 min-w-0" data-go="landing" aria-label="ComicCraft home"> <span class="w-9 h-9 rounded-xl flex items-center justify-center font-black text-white" style="background:var(--primary)">✦</span> <span data-template-id="brand-name" class="canva-text font-extrabold tracking-tight text-white" style="color: rgb(248, 250, 252); font-weight: 800; font-style: normal; font-size: 16px;">ComicCraft.</span> </button>
      <nav id="main-nav" class="mobile-links flex md:flex items-center gap-1 md:gap-2" aria-label="Main navigation"><button data-template-id="nav-home" type="button" class="canva-button nav-link" data-go="landing" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Explore</button> <button data-template-id="nav-dashboard" type="button" class="canva-button nav-link" data-go="dashboard" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Dashboard</button> <button data-template-id="nav-library" type="button" class="canva-button nav-link" data-go="library" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">My Comics</button> <button data-template-id="nav-settings" type="button" class="canva-button nav-link" data-go="settings" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Settings</button> <button data-template-id="nav-profile" type="button" class="canva-button nav-link" data-go="login" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">◉ Profile</button>
      </nav><button id="mobile-toggle" type="button" class="mobile-trigger secondary-btn px-3 py-2" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false"><i data-lucide="menu"></i></button>
@@ -65,24 +31,24 @@
      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-14 md:pt-24 pb-16">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
        <div>
-        <div data-template-id="hero-kicker" class="canva-tag eyebrow inline-flex items-center gap-2 rounded-full px-3 py-2 mb-7" style="background: rgb(39, 40, 82); color: rgb(255, 217, 61); font-weight: 400; font-style: normal; font-size: 16px;">✦ THE NEW WAY TO TELL STORIES</div>
+        <div data-template-id="hero-kicker" class="canva-tag eyebrow inline-flex items-center gap-2 rounded-full px-3 py-2 mb-7" style="background: rgba(39, 40, 82, 0.70); color: rgb(255, 217, 61); font-weight: 400; font-style: normal; font-size: 16px;">✦ THE NEW WAY TO TELL STORIES</div>
         <h1 data-template-id="hero-title" class="canva-text display font-bold max-w-2xl" style="font-size: 70px; color: rgb(248, 250, 252); font-weight: 700; font-style: normal;">Turn Your Ideas Into Stunning AI Comics</h1>
         <p data-template-id="hero-copy" class="canva-text muted mt-6 max-w-xl leading-relaxed" style="font-size: 18px; color: rgb(169, 184, 207); font-weight: 400; font-style: normal;">Dream up a story, choose your world, and turn it into an illustrated comic in moments. Your next universe starts with a sentence.</p>
-        <div class="flex flex-wrap items-center gap-4 mt-8"><button data-template-id="hero-cta" type="button" class="canva-button primary-btn" data-go="dashboard" style="background: rgb(108, 99, 255); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Create Comic Now</button> <button data-template-id="hero-library" type="button" class="canva-button secondary-btn" data-go="library" style="background: rgb(30, 41, 59); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Explore the library</button>
+        <div class="flex flex-wrap items-center gap-4 mt-8"><button data-template-id="hero-cta" type="button" class="canva-button primary-btn" data-go="dashboard" style="background: rgb(108, 99, 255); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Create Comic Now</button> <button data-template-id="hero-library" type="button" class="canva-button secondary-btn" data-go="library" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Explore the library</button>
         </div>
         <p data-template-id="hero-disclaimer" class="canva-text muted mt-5" style="font-size: 13px; color: rgb(169, 184, 207); font-weight: 400; font-style: normal;">Interactive demo generation · Create and save your own comics</p>
        </div>
        <div class="relative max-w-xl mx-auto w-full">
         <div class="absolute -inset-5 rounded-full blur-3xl opacity-30" style="background:var(--primary)"></div>
         <div class="relative grid grid-cols-5 gap-2 h-[340px] sm:h-[440px] rotate-[-3deg]">
-         <div class="col-span-3 comic-frame rounded-xl relative"><img data-template-id="hero-photo" loading="lazy" class="canva-image photo" src="https://images.pexels.com/photos/33050960/pexels-photo-33050960.jpeg" alt="Neon-lit creative gaming setup with anime-inspired artwork"> <span data-template-id="hero-bubble" class="canva-text speech absolute bottom-5 left-4 right-5" style="font-size: 14px; background: rgb(255, 255, 255); color: rgb(21, 32, 58); font-weight: 800; font-style: normal;">Every great universe begins with “what if?”</span>
+         <div class="col-span-3 comic-frame rounded-xl relative"><img data-template-id="hero-photo" loading="lazy" class="canva-image photo" src="assets/images/hero-photo.jpg" alt="Neon-lit creative gaming setup with anime-inspired artwork"> <span data-template-id="hero-bubble" class="canva-text speech absolute bottom-5 left-4 right-5" style="font-size: 14px; background: rgb(255, 255, 255); color: rgb(21, 32, 58); font-weight: 800; font-style: normal;">Every great universe begins with “what if?”</span>
          </div>
          <div class="col-span-2 grid grid-rows-2 gap-2">
           <div class="comic-frame rounded-xl">
-           <img data-template-id="hero-side-one" loading="lazy" class="canva-image photo" src="https://images.pexels.com/photos/8107956/pexels-photo-8107956.jpeg" alt="Woman in futuristic attire illuminated by neon light">
+           <img data-template-id="hero-side-one" loading="lazy" class="canva-image photo" src="assets/images/hero-side-one.jpg" alt="Woman in futuristic attire illuminated by neon light">
           </div>
           <div class="comic-frame rounded-xl">
-           <img data-template-id="hero-side-two" loading="lazy" class="canva-image photo" src="https://images.pexels.com/photos/27451259/pexels-photo-27451259.jpeg" alt="Astronaut amid colorful cosmic light">
+           <img data-template-id="hero-side-two" loading="lazy" class="canva-image photo" src="assets/images/hero-side-two.jpg" alt="Astronaut amid colorful cosmic light">
           </div>
          </div>
         </div>
@@ -95,32 +61,32 @@
       <p data-template-id="features-kicker" class="canva-text eyebrow mb-3" style="color: rgb(255, 217, 61); font-weight: 400; font-style: normal; font-size: 16px;">THE CREATIVE TOOLKIT</p>
       <h2 data-template-id="features-heading" class="canva-text display font-bold mb-8" style="font-size: 24px; color: rgb(248, 250, 252); font-weight: 700; font-style: normal;">Everything your story needs.</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-       <article data-template-id="feature-1" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <article data-template-id="feature-1" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <span class="text-2xl">✍</span>
         <h3 data-template-id="feature-1-title" class="canva-text font-bold mt-4 mb-2" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 19px;">AI Story Generation</h3>
         <p data-template-id="feature-1-copy" class="canva-text muted" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Shape a spark of an idea into a panel-by-panel story.</p>
        </article>
-       <article data-template-id="feature-2" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <article data-template-id="feature-2" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <span class="text-2xl">🎨</span>
         <h3 data-template-id="feature-2-title" class="canva-text font-bold mt-4 mb-2" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 19px;">AI Comic Artwork</h3>
         <p data-template-id="feature-2-copy" class="canva-text muted" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Pair your narrative with expressive visual inspiration.</p>
        </article>
-       <article data-template-id="feature-3" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <article data-template-id="feature-3" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <span class="text-2xl">◈</span>
         <h3 data-template-id="feature-3-title" class="canva-text font-bold mt-4 mb-2" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 19px;">Multiple Art Styles</h3>
         <p data-template-id="feature-3-copy" class="canva-text muted" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">From neon noir to whimsical fantasy, set the mood.</p>
        </article>
-       <article data-template-id="feature-4" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <article data-template-id="feature-4" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <span class="text-2xl">↓</span>
         <h3 data-template-id="feature-4-title" class="canva-text font-bold mt-4 mb-2" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 19px;">One-Click PDF Export</h3>
         <p data-template-id="feature-4-copy" class="canva-text muted" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Take a readable copy of your story anywhere.</p>
        </article>
-       <article data-template-id="feature-5" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <article data-template-id="feature-5" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <span class="text-2xl">◎</span>
         <h3 data-template-id="feature-5-title" class="canva-text font-bold mt-4 mb-2" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 19px;">Character Consistency</h3>
         <p data-template-id="feature-5-copy" class="canva-text muted" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Keep your hero at the heart of every scene.</p>
        </article>
-       <article data-template-id="feature-6" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <article data-template-id="feature-6" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <span class="text-2xl">▣</span>
         <h3 data-template-id="feature-6-title" class="canva-text font-bold mt-4 mb-2" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 19px;">Instant Comic Preview</h3>
         <p data-template-id="feature-6-copy" class="canva-text muted" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Read the whole adventure as a flowing comic.</p>
@@ -154,17 +120,17 @@
        <div>
         <p data-template-id="showcase-kicker" class="canva-text eyebrow mb-3" style="color: rgb(255, 217, 61); font-weight: 400; font-style: normal; font-size: 16px;">A GLIMPSE INSIDE</p>
         <h2 data-template-id="showcase-heading" class="canva-text display font-bold" style="font-size: 24px; color: rgb(248, 250, 252); font-weight: 700; font-style: normal;">Stories that leap off the page.</h2>
-       </div><button data-template-id="showcase-link" type="button" class="canva-button secondary-btn" data-go="library" style="background: rgb(30, 41, 59); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">See the library →</button>
+       </div><button data-template-id="showcase-link" type="button" class="canva-button secondary-btn" data-go="library" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">See the library →</button>
       </div>
       <div class="grid md:grid-cols-3 gap-5">
        <div class="comic-frame rounded-xl h-80 relative">
-        <img data-template-id="showcase-city" loading="lazy" class="canva-image photo" src="https://images.pexels.com/photos/17195067/pexels-photo-17195067.jpeg" alt="Neon signs illuminating an urban alley at night"><span data-template-id="showcase-city-bubble" class="canva-text speech absolute bottom-5 left-4 right-4" style="background: rgb(255, 255, 255); color: rgb(21, 32, 58); font-weight: 400; font-style: normal; font-size: 16px;">The city had one more secret.</span>
+        <img data-template-id="showcase-city" loading="lazy" class="canva-image photo" src="assets/images/showcase-city.jpg" alt="Neon signs illuminating an urban alley at night"><span data-template-id="showcase-city-bubble" class="canva-text speech absolute bottom-5 left-4 right-4" style="background: rgb(255, 255, 255); color: rgb(21, 32, 58); font-weight: 400; font-style: normal; font-size: 16px;">The city had one more secret.</span>
        </div>
        <div class="comic-frame rounded-xl h-80 relative">
-        <img data-template-id="showcase-hero" loading="lazy" class="canva-image photo" src="https://images.pexels.com/photos/38691365/pexels-photo-38691365.jpeg" alt="Superhero-costumed figure posing at sunset"><span data-template-id="showcase-hero-bubble" class="canva-text speech absolute top-5 left-4 right-4" style="background: rgb(255, 255, 255); color: rgb(21, 32, 58); font-weight: 400; font-style: normal; font-size: 16px;">Then let's make some noise!</span>
+        <img data-template-id="showcase-hero" loading="lazy" class="canva-image photo" src="assets/images/showcase-hero.jpg" alt="Superhero-costumed figure posing at sunset"><span data-template-id="showcase-hero-bubble" class="canva-text speech absolute top-5 left-4 right-4" style="background: rgb(255, 255, 255); color: rgb(21, 32, 58); font-weight: 400; font-style: normal; font-size: 16px;">Then let's make some noise!</span>
        </div>
        <div class="comic-frame rounded-xl h-80 relative">
-        <img data-template-id="showcase-space" loading="lazy" class="canva-image photo" src="https://images.pexels.com/photos/8474441/pexels-photo-8474441.jpeg" alt="Two astronauts on a Mars-like landscape"><span data-template-id="showcase-space-bubble" class="canva-text speech absolute bottom-5 left-4 right-4" style="background: rgb(255, 255, 255); color: rgb(21, 32, 58); font-weight: 400; font-style: normal; font-size: 16px;">Beyond the stars, home awaits.</span>
+        <img data-template-id="showcase-space" loading="lazy" class="canva-image photo" src="assets/images/showcase-space.jpg" alt="Two astronauts on a Mars-like landscape"><span data-template-id="showcase-space-bubble" class="canva-text speech absolute bottom-5 left-4 right-4" style="background: rgb(255, 255, 255); color: rgb(21, 32, 58); font-weight: 400; font-style: normal; font-size: 16px;">Beyond the stars, home awaits.</span>
        </div>
       </div>
      </section>
@@ -172,39 +138,39 @@
       <p data-template-id="reviews-kicker" class="canva-text eyebrow mb-3" style="color: rgb(255, 217, 61); font-weight: 400; font-style: normal; font-size: 16px;">CREATORS ARE TALKING</p>
       <h2 data-template-id="reviews-heading" class="canva-text display font-bold mb-8" style="font-size: 24px; color: rgb(248, 250, 252); font-weight: 700; font-style: normal;">Made for the storytellers.</h2>
       <div class="grid md:grid-cols-3 gap-4">
-       <article data-template-id="review-card-1" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <article data-template-id="review-card-1" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <div class="text-yellow-300 mb-4" aria-label="5 out of 5 stars">
          ★★★★★
         </div>
         <p data-template-id="review-1-copy" class="canva-text mb-6" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">“A lovely way to turn a tiny idea into something I can actually share with my writing group.”</p>
         <div class="flex items-center gap-3">
-         <img data-template-id="avatar-1" loading="lazy" class="canva-image w-11 h-11 rounded-full object-cover" src="https://images.pexels.com/photos/8036832/pexels-photo-8036832.jpeg" alt="Smiling artist in a colorful studio">
+         <img data-template-id="avatar-1" loading="lazy" class="canva-image w-11 h-11 rounded-full object-cover" src="assets/images/avatar-1.jpg" alt="Smiling artist in a colorful studio">
          <div>
           <p data-template-id="review-1-name" class="canva-text font-bold" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Maya Chen</p>
           <p data-template-id="review-1-role" class="canva-text muted" style="font-size: 16px; color: rgb(169, 184, 207); font-weight: 400; font-style: normal;">Indie writer · fictional review</p>
          </div>
         </div>
        </article>
-       <article data-template-id="review-card-2" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <article data-template-id="review-card-2" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <div class="text-yellow-300 mb-4" aria-label="5 out of 5 stars">
          ★★★★★
         </div>
         <p data-template-id="review-2-copy" class="canva-text mb-6" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">“The panel-by-panel format helps me discover the pacing before I start drawing.”</p>
         <div class="flex items-center gap-3">
-         <img data-template-id="avatar-2" loading="lazy" class="canva-image w-11 h-11 rounded-full object-cover" src="https://images.pexels.com/photos/31468899/pexels-photo-31468899.jpeg" alt="Smiling creative professional in a studio">
+         <img data-template-id="avatar-2" loading="lazy" class="canva-image w-11 h-11 rounded-full object-cover" src="assets/images/avatar-2.jpg" alt="Smiling creative professional in a studio">
          <div>
           <p data-template-id="review-2-name" class="canva-text font-bold" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Alex Rivera</p>
           <p data-template-id="review-2-role" class="canva-text muted" style="font-size: 16px; color: rgb(169, 184, 207); font-weight: 400; font-style: normal;">Illustrator · fictional review</p>
          </div>
         </div>
        </article>
-       <article data-template-id="review-card-3" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <article data-template-id="review-card-3" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <div class="text-yellow-300 mb-4" aria-label="5 out of 5 stars">
          ★★★★★
         </div>
         <p data-template-id="review-3-copy" class="canva-text mb-6" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">“I made a little space adventure in one sitting. The PDF makes it easy to keep.”</p>
         <div class="flex items-center gap-3">
-         <img data-template-id="avatar-3" loading="lazy" class="canva-image w-11 h-11 rounded-full object-cover" src="https://images.pexels.com/photos/37827715/pexels-photo-37827715.jpeg" alt="Smiling writer holding a book and pen">
+         <img data-template-id="avatar-3" loading="lazy" class="canva-image w-11 h-11 rounded-full object-cover" src="assets/images/avatar-3.jpg" alt="Smiling writer holding a book and pen">
          <div>
           <p data-template-id="review-3-name" class="canva-text font-bold" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Priya Shah</p>
           <p data-template-id="review-3-role" class="canva-text muted" style="font-size: 16px; color: rgb(169, 184, 207); font-weight: 400; font-style: normal;">Story hobbyist · fictional review</p>
@@ -213,7 +179,7 @@
        </article>
       </div>
      </section>
-     <footer data-template-id="landing-footer" class="canva-footer border-t ink-line mt-8" style="background: rgb(15, 23, 42);">
+     <footer data-template-id="landing-footer" class="canva-footer border-t ink-line mt-8" style="background: rgba(15, 23, 42, 0.62);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row justify-between gap-6">
        <div>
         <p data-template-id="footer-brand" class="canva-text font-extrabold mb-2" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">✦ ComicCraft.</p>
@@ -235,7 +201,7 @@
       <p data-template-id="dashboard-subtitle" class="canva-text muted mb-8" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Give your imagination a direction. We'll build a sample comic from your choices.</p>
       <div class="grid lg:grid-cols-[1.12fr_.88fr] gap-6 items-start">
        <div>
-        <form id="create-form" data-template-id="create-card" class="canva-card glass rounded-3xl p-5 sm:p-8 space-y-5" style="background: rgb(30, 41, 59);">
+        <form id="create-form" data-template-id="create-card" class="canva-card glass rounded-3xl p-5 sm:p-8 space-y-5" style="background: rgba(30, 41, 59, 0.55);">
          <h2 data-template-id="create-heading" class="canva-text font-bold" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 24px;">Create your next comic</h2>
          <div>
           <label data-template-id="prompt-label" for="story-prompt" class="canva-text field-label" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Story Prompt *</label><textarea id="story-prompt" rows="5" required="" minlength="15" maxlength="1200" placeholder="A courier discovers the moon has been sending messages to her city..."></textarea>
@@ -264,17 +230,17 @@
          </div>
          <p data-template-id="generation-disclosure" class="canva-text muted" style="font-size: 13px; color: rgb(169, 184, 207); font-weight: 400; font-style: normal;">Demo mode: story panels are composed from your prompt and choices; illustrations are editable sample artwork.</p><button id="generate-button" data-template-id="generate-button" type="submit" class="canva-button primary-btn w-full" style="background: rgb(108, 99, 255); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">✦ Generate Comic</button>
         </form>
-        <aside data-template-id="tips-card" class="canva-card glass rounded-2xl p-5 mt-5" style="background: rgb(30, 41, 59);">
+        <aside data-template-id="tips-card" class="canva-card glass rounded-2xl p-5 mt-5" style="background: rgba(30, 41, 59, 0.55);">
          <h2 data-template-id="tips-heading" class="canva-text font-bold mb-2" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 24px;">✳ Prompt tips</h2>
          <p data-template-id="tips-copy" class="canva-text muted" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Give your character a goal and a surprise. Try: “A mapmaker finds a door that only appears in the rain.”</p>
         </aside>
        </div>
-       <aside data-template-id="dashboard-preview-card" class="canva-card glass rounded-3xl p-5 sm:p-7 lg:sticky lg:top-24" style="background: rgb(30, 41, 59);">
+       <aside data-template-id="dashboard-preview-card" class="canva-card glass rounded-3xl p-5 sm:p-7 lg:sticky lg:top-24" style="background: rgba(30, 41, 59, 0.55);">
         <div class="flex items-center justify-between mb-5">
          <h2 data-template-id="dashboard-preview-heading" class="canva-text font-bold" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 24px;">Studio preview</h2><span class="tag">LIVE WORKSPACE</span>
         </div>
         <div class="comic-frame rounded-xl h-64 sm:h-80 relative">
-         <img data-template-id="dashboard-preview-image" loading="lazy" class="canva-image photo" src="https://images.pexels.com/photos/30889258/pexels-photo-30889258.jpeg" alt="Digital illustration on a drawing tablet with stylus"><span class="absolute bottom-3 left-3 tag">YOUR NEXT STORY</span>
+         <img data-template-id="dashboard-preview-image" loading="lazy" class="canva-image photo" src="assets/images/dashboard-preview-image.jpg" alt="Digital illustration on a drawing tablet with stylus"><span class="absolute bottom-3 left-3 tag">YOUR NEXT STORY</span>
         </div>
         <div id="preview-empty" class="mt-6">
          <h3 data-template-id="preview-empty-heading" class="canva-text font-bold mb-2" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 19px;">Your story is waiting.</h3>
@@ -300,7 +266,7 @@
     <section id="view-preview" class="view" hidden="">
      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-7">
       <div class="glass rounded-2xl p-3 flex flex-wrap gap-2 items-center justify-between sticky top-[65px] z-30"><button data-template-id="reader-back" type="button" class="canva-button quiet-btn" data-go="library" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">← My Comics</button>
-       <div class="reader-actions flex gap-2"><button id="regenerate-button" data-template-id="regenerate-button" type="button" class="canva-button secondary-btn" style="background: rgb(30, 41, 59); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Regenerate Comic</button> <button data-template-id="edit-button" type="button" class="canva-button secondary-btn" data-go="dashboard" style="background: rgb(30, 41, 59); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Edit Comic</button> <button id="preview-download" data-template-id="preview-download" type="button" class="canva-button primary-btn" style="background: rgb(108, 99, 255); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Download PDF</button> <button id="share-button" data-template-id="share-button" type="button" class="canva-button secondary-btn" style="background: rgb(30, 41, 59); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Share Comic</button>
+       <div class="reader-actions flex gap-2"><button id="regenerate-button" data-template-id="regenerate-button" type="button" class="canva-button secondary-btn" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Regenerate Comic</button> <button data-template-id="edit-button" type="button" class="canva-button secondary-btn" data-go="dashboard" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Edit Comic</button> <button id="preview-download" data-template-id="preview-download" type="button" class="canva-button primary-btn" style="background: rgb(108, 99, 255); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Download PDF</button> <button id="share-button" data-template-id="share-button" type="button" class="canva-button secondary-btn" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Share Comic</button>
        </div>
       </div>
       <div class="mt-10 mb-7">
@@ -317,6 +283,10 @@
        <aside class="glass rounded-2xl p-5 lg:sticky lg:top-40">
         <h2 data-template-id="toc-heading" class="canva-text font-bold mb-4" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 24px;">Panel navigator</h2>
         <div id="panel-navigator" class="flex flex-wrap lg:flex-col gap-2"></div>
+        <div class="mt-4 flex flex-wrap gap-2">
+         <button id="continue-button" type="button" class="canva-button secondary-btn" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Continue story</button>
+         <button id="regenerate-panel-button" type="button" class="canva-button secondary-btn" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Redraw panel</button>
+        </div>
        </aside>
       </div>
      </div>
@@ -330,7 +300,7 @@
         <p data-template-id="library-subtitle" class="canva-text muted mt-2" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Every universe you've brought to life, in one place.</p>
        </div><button data-template-id="library-create" class="canva-button primary-btn" data-go="dashboard" style="background: rgb(108, 99, 255); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">+ Create a comic</button>
       </div>
-      <div data-template-id="library-toolbar" class="canva-panel glass rounded-2xl p-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-7" style="background: rgb(30, 41, 59);">
+      <div data-template-id="library-toolbar" class="canva-panel glass rounded-2xl p-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-7" style="background: rgba(30, 41, 59, 0.55);">
        <div>
         <label data-template-id="search-label" for="library-search" class="canva-text field-label" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Search comics</label><input id="library-search" type="search" placeholder="Search by title or hero">
        </div>
@@ -361,12 +331,12 @@
       <p data-template-id="success-kicker" class="canva-text eyebrow mt-5 mb-3" style="color: rgb(255, 217, 61); font-weight: 400; font-style: normal; font-size: 16px;">READY FOR THE REAL WORLD</p>
       <h1 data-template-id="success-heading" class="canva-text display font-bold" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 32px;">Your Comic Has Been Successfully Generated!</h1>
       <p data-template-id="success-copy" class="canva-text muted mt-5" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Your PDF is ready. Keep creating, or revisit the story whenever inspiration strikes.</p>
-      <div data-template-id="export-card" class="canva-card glass rounded-2xl p-6 text-left mt-8" style="background: rgb(30, 41, 59);">
+      <div data-template-id="export-card" class="canva-card glass rounded-2xl p-6 text-left mt-8" style="background: rgba(30, 41, 59, 0.55);">
        <p data-template-id="export-card-label" class="canva-text eyebrow mb-3" style="color: rgb(255, 217, 61); font-weight: 400; font-style: normal; font-size: 16px;">EXPORT SUMMARY</p>
        <h2 id="export-title" class="font-bold"></h2>
        <p id="export-details" class="muted mt-2"></p>
       </div>
-      <div class="flex flex-wrap justify-center gap-3 mt-8"><button id="download-again" data-template-id="download-again" type="button" class="canva-button primary-btn" style="background: rgb(108, 99, 255); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Download Again</button> <button data-template-id="create-another" type="button" class="canva-button secondary-btn" data-go="dashboard" style="background: rgb(30, 41, 59); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Create Another Comic</button> <button data-template-id="success-library" type="button" class="canva-button secondary-btn" data-go="library" style="background: rgb(30, 41, 59); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Go To Library</button>
+      <div class="flex flex-wrap justify-center gap-3 mt-8"><button id="download-again" data-template-id="download-again" type="button" class="canva-button primary-btn" style="background: rgb(108, 99, 255); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Download Again</button> <button data-template-id="create-another" type="button" class="canva-button secondary-btn" data-go="dashboard" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Create Another Comic</button> <button data-template-id="success-library" type="button" class="canva-button secondary-btn" data-go="library" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Go To Library</button>
       </div>
      </div>
     </section>
@@ -376,22 +346,22 @@
       <h1 data-template-id="settings-heading" class="canva-text display font-bold mb-3" style="color: rgb(248, 250, 252); font-weight: 700; font-style: normal; font-size: 32px;">Settings</h1>
       <p data-template-id="settings-copy" class="canva-text muted mb-8" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Tune your creative space. Preferences apply during this visit.</p>
       <form id="settings-form" class="grid md:grid-cols-2 gap-5">
-       <div data-template-id="settings-appearance-card" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <div data-template-id="settings-appearance-card" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <h2 data-template-id="settings-appearance-heading" class="canva-text font-bold mb-4" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 24px;">Theme Settings</h2><label data-template-id="theme-label" for="theme-select" class="canva-text field-label" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Appearance</label><select id="theme-select"><option value="dark">Dark — default</option><option value="light">Light</option></select>
        </div>
-       <div data-template-id="settings-style-card" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <div data-template-id="settings-style-card" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <h2 data-template-id="settings-style-heading" class="canva-text font-bold mb-4" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 24px;">Preferred Art Style</h2><label data-template-id="preferred-style-label" for="preferred-style" class="canva-text field-label" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Starting style</label><select id="preferred-style"><option>Neon Noir</option><option>Graphic Novel</option><option>Storybook</option></select>
        </div>
-       <div data-template-id="settings-language-card" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <div data-template-id="settings-language-card" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <h2 data-template-id="settings-language-heading" class="canva-text font-bold mb-4" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 24px;">Language Selection</h2><label data-template-id="language-label" for="language-select" class="canva-text field-label" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Interface language</label><select id="language-select"><option value="en">English</option></select>
         <p data-template-id="language-note" class="canva-text muted mt-3" style="font-size: 13px; color: rgb(169, 184, 207); font-weight: 400; font-style: normal;">More interface languages are coming soon.</p>
        </div>
-       <div data-template-id="settings-notifications-card" class="canva-card glass rounded-2xl p-6" style="background: rgb(30, 41, 59);">
+       <div data-template-id="settings-notifications-card" class="canva-card glass rounded-2xl p-6" style="background: rgba(30, 41, 59, 0.55);">
         <h2 data-template-id="settings-notifications-heading" class="canva-text font-bold mb-4" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 24px;">Notification Settings</h2><label class="flex gap-3 items-start cursor-pointer"><input id="notification-toggle" type="checkbox" checked="" class="w-5 h-5 mt-1"><span data-template-id="notification-label" class="canva-text" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Show in-app action notifications</span></label>
        </div>
-       <div data-template-id="settings-account-card" class="canva-card glass rounded-2xl p-6 md:col-span-2" style="background: rgb(30, 41, 59);">
+       <div data-template-id="settings-account-card" class="canva-card glass rounded-2xl p-6 md:col-span-2" style="background: rgba(30, 41, 59, 0.55);">
         <h2 data-template-id="settings-account-heading" class="canva-text font-bold mb-2" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 24px;">Account Management</h2>
-        <p data-template-id="settings-account-copy" class="canva-text muted mb-4" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Explore the account screens in demo mode. No sign-in is required.</p><button data-template-id="settings-account-action" type="button" class="canva-button secondary-btn" data-go="login" style="background: rgb(30, 41, 59); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">View demo profile</button>
+        <p data-template-id="settings-account-copy" class="canva-text muted mb-4" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Explore the account screens in demo mode. No sign-in is required.</p><button data-template-id="settings-account-action" type="button" class="canva-button secondary-btn" data-go="login" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">View demo profile</button>
        </div>
        <div class="md:col-span-2 flex items-center gap-4">
         <button data-template-id="save-settings" type="submit" class="canva-button primary-btn" style="background: rgb(108, 99, 255); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Save preferences</button><span id="settings-feedback" role="status" class="muted"></span>
@@ -402,7 +372,7 @@
     <section id="view-login" class="view" hidden="">
      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 grid lg:grid-cols-2 gap-7 items-stretch">
       <div class="glass rounded-3xl overflow-hidden min-h-64 lg:min-h-[550px] relative">
-       <img data-template-id="auth-login-image" loading="lazy" class="canva-image photo absolute inset-0" src="https://images.pexels.com/photos/29861519/pexels-photo-29861519.jpeg" alt="Artist sketching a comic character at a modern desk">
+       <img data-template-id="auth-login-image" loading="lazy" class="canva-image photo absolute inset-0" src="assets/images/auth-login-image.jpg" alt="Artist sketching a comic character at a modern desk">
        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent"></div>
        <div class="absolute bottom-7 left-7 right-7">
         <p data-template-id="auth-image-kicker" class="canva-text eyebrow mb-3" style="color: rgb(255, 217, 61); font-weight: 400; font-style: normal; font-size: 16px;">YOUR STORY STARTS HERE</p>
@@ -414,7 +384,7 @@
        <p data-template-id="login-copy" class="canva-text muted mb-7" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">Explore the ComicCraft workspace without an account.</p><label data-template-id="demo-name-label" for="demo-name" class="canva-text field-label" style="color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">Display name</label><input id="demo-name" maxlength="40" placeholder="Your creator name"> <button id="enter-demo" data-template-id="enter-demo-button" type="button" class="canva-button primary-btn mt-5" style="background: rgb(108, 99, 255); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Continue to demo workspace</button>
        <p data-template-id="auth-security-note" class="canva-text muted mt-5" style="font-size: 13px; color: rgb(169, 184, 207); font-weight: 400; font-style: normal;">Account authentication and social sign-in are not available in this demo. Never enter a password here.</p>
        <div class="border-t ink-line mt-7 pt-6">
-        <p data-template-id="login-switch-copy" class="canva-text muted mb-3" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">New around here?</p><button data-template-id="login-signup-link" type="button" class="canva-button secondary-btn" data-go="signup" style="background: rgb(30, 41, 59); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">See the sign-up preview →</button>
+        <p data-template-id="login-switch-copy" class="canva-text muted mb-3" style="color: rgb(169, 184, 207); font-weight: 400; font-style: normal; font-size: 16px;">New around here?</p><button data-template-id="login-signup-link" type="button" class="canva-button secondary-btn" data-go="signup" style="background: rgba(30, 41, 59, 0.55); color: rgb(248, 250, 252); font-weight: 400; font-style: normal; font-size: 16px;">See the sign-up preview →</button>
        </div>
       </div>
      </div>
@@ -422,7 +392,7 @@
     <section id="view-signup" class="view" hidden="">
      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 grid lg:grid-cols-2 gap-7 items-stretch">
       <div class="glass rounded-3xl overflow-hidden min-h-64 lg:min-h-[550px] relative">
-       <img data-template-id="auth-signup-image" loading="lazy" class="canva-image photo absolute inset-0" src="https://images.pexels.com/photos/33495060/pexels-photo-33495060.jpeg" alt="Artist drawing detailed comic book characters">
+       <img data-template-id="auth-signup-image" loading="lazy" class="canva-image photo absolute inset-0" src="assets/images/auth-signup-image.jpg" alt="Artist drawing detailed comic book characters">
        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/25 to-transparent"></div>
        <div class="absolute bottom-7 left-7 right-7">
         <p data-template-id="signup-image-kicker" class="canva-text eyebrow mb-3" style="color: rgb(255, 217, 61); font-weight: 400; font-style: normal; font-size: 16px;">INFINITE FIRST PAGES</p>
@@ -473,6 +443,7 @@
      <div class="comic-frame mx-4 sm:mx-6 rounded-lg h-64 sm:h-[420px] relative"><img data-template-id="reader-image-one" loading="lazy" class="canva-image photo reader-photo panel-image"> <img data-template-id="reader-image-two" loading="lazy" class="canva-image photo reader-photo panel-image hidden-force"> <img data-template-id="reader-image-three" loading="lazy" class="canva-image photo reader-photo panel-image hidden-force"> <span class="absolute bottom-4 left-4 right-4 sm:left-auto sm:max-w-[65%] speech panel-dialogue"></span>
      </div>
      <div class="p-5 sm:p-6">
+      <p class="panel-dialogue mb-4 border-l-4 pl-4" style="border-color:var(--cyan)"></p>
       <p class="panel-scene muted mb-4"></p>
       <p class="panel-narration border-l-4 pl-4 italic" style="border-color:var(--yellow)"></p><button data-template-id="next-panel-button" type="button" class="canva-button quiet-btn next-panel mt-5">Next panel ↓</button>
      </div>
@@ -503,39 +474,166 @@
   document.addEventListener("click", e=>{const link=e.target.closest("[data-go]");if(link){e.preventDefault();go(link.dataset.go)}});
   $("#mobile-toggle").addEventListener("click",()=>{const open=$("#main-nav").classList.toggle("open");$("#mobile-toggle").setAttribute("aria-expanded",String(open))});
 
-  const handler={onDataChanged(data){state.comics=data.slice();renderLibrary();if(state.selected?.__backendId){const match=data.find(x=>x.__backendId===state.selected.__backendId);if(match)state.selected=match;}}};
-  async function startData(){
-    try {const result=await window.dataSdk.init(handler);if(!result.isOk)notify("Could not connect to your Canva Sheet. Please try again later.",true)}
-    catch {notify("Could not connect to your Canva Sheet. Please try again later.",true)}
+  // --- Backend API client -------------------------------------------------
+  // Same-origin by default (the page is served by FastAPI). Override by
+  // setting window.COMICCRAFT_API_BASE before this script runs.
+  const API_BASE = (window.COMICCRAFT_API_BASE || "").replace(/\/$/, "");
+  const api = {
+    async call(method, path, body){
+      const res = await fetch(API_BASE + path, {
+        method,
+        headers: body ? {"Content-Type":"application/json"} : undefined,
+        body: body ? JSON.stringify(body) : undefined
+      });
+      if(!res.ok){
+        let detail = res.status + " " + res.statusText;
+        try { const j = await res.json(); detail = j?.error?.message || j?.detail || detail; } catch {}
+        throw new Error(detail);
+      }
+      return res.status === 204 ? null : res.json();
+    },
+    create(payload){ return this.call("POST","/api/comics",payload) },
+    get(id){ return this.call("GET","/api/comics/"+encodeURIComponent(id)) },
+    status(id){ return this.call("GET","/api/comics/"+encodeURIComponent(id)+"/status") },
+    list(){ return this.call("GET","/api/users/me/comics") },
+    remove(id){ return this.call("DELETE","/api/comics/"+encodeURIComponent(id)) },
+    regeneratePanel(comicId, panelId, instruction){
+      return this.call("POST",`/api/comics/${encodeURIComponent(comicId)}/panels/${encodeURIComponent(panelId)}/regenerate`,{instruction});
+    },
+    continueComic(comicId, instruction, panelCount){
+      return this.call("POST","/api/comics/"+encodeURIComponent(comicId)+"/continue",{instruction,panel_count:panelCount});
+    },
+    exportPdf(id){ return this.call("POST","/api/comics/"+encodeURIComponent(id)+"/export") },
+    downloadUrl(id){ return API_BASE + "/api/comics/" + encodeURIComponent(id) + "/download" }
+  };
+
+  // Favorites are not stored by the backend yet, so keep them per-browser.
+  const FAV_KEY = "comiccraft:favorites";
+  const loadFavorites = () => { try { return new Set(JSON.parse(localStorage.getItem(FAV_KEY)||"[]")) } catch { return new Set() } };
+  const saveFavorites = set => { try { localStorage.setItem(FAV_KEY, JSON.stringify([...set])) } catch {} };
+  let favorites = loadFavorites();
+
+  // Progress labels per backend stage (mirrors GenerationStatus).
+  const STAGE_LABELS = {
+    CREATED:"Queued",
+    GENERATING_STORY:"Finding the story arc",
+    GENERATING_IMAGES:"Illustrating your panels",
+    BUILDING_COMIC:"Finishing your comic",
+    READY:"Ready",
+    FAILED:"Something went wrong"
+  };
+
+  // Map a backend comic record into the shape the rest of the UI expects.
+  function toRecord(comic){
+    return {
+      __backendId: comic.id,
+      id: comic.id,
+      title: comic.title || "Untitled comic",
+      story_prompt: comic.prompt || "",
+      character_name: comic.character?.name || "",
+      character_description: comic.character?.appearance || "",
+      setting: "",
+      tone: comic.tone || "",
+      art_style: comic.style || "",
+      panel_count: comic.panel_count || (comic.panels||[]).length,
+      status: comic.status,
+      created_at: comic.created_at,
+      panels_json: JSON.stringify(comic.panels || []),
+      is_favorite: favorites.has(comic.id),
+      cover_image: coverFromStyle(comic.style)
+    };
   }
-  function makePanels(form){
-    const beats=[
-      ["A Strange Beginning",`${form.character_name} notices that something is very wrong in ${form.setting}.`,"This was not on the map.","An ordinary day bends toward the extraordinary."],
-      ["The First Clue",`A curious clue draws ${form.character_name} further into the mystery.`,"I have to see where this leads.","One small discovery changes everything."],
-      ["Across the Threshold",`${form.character_name} takes a risk and enters an unfamiliar place.`,"There is no turning back now.","Courage has a habit of arriving quietly."],
-      ["A New Ally",`An unexpected friend offers help just when it is needed.`,"We can solve this together.","Even heroes need someone in their corner."],
-      ["The Reveal",`The truth behind the adventure finally comes into focus.`,"So that's what this has been about!","Every question leaves a brighter answer."]
-    ];
-    return Array.from({length:form.panel_count},(_,i)=>{let beat=beats[i%5];let chapter=Math.floor(i/5);return {title:chapter?`${beat[0]} · Act ${chapter+1}`:beat[0],scene:beat[1],dialogue:beat[2],narration:i===0?`It began with an idea: ${form.story_prompt.slice(0,135)}${form.story_prompt.length>135?"…":""}`:beat[3]}});
+  function coverFromStyle(style){
+    const s = String(style||"").toLowerCase();
+    if(s.includes("story")) return "forest";
+    if(s.includes("graphic")) return "space";
+    return "neon";
   }
-  $("#create-form").addEventListener("submit",async e=>{
-    e.preventDefault();if(state.generating||state.pending)return;
-    const form=e.currentTarget;if(!form.reportValidity())return;
-    if(state.comics.length>=999){notify("The 999-comic limit has been reached. Delete a comic before creating another.",true);return}
-    const data={title:"The "+$("#character-name").value.trim()+" Chronicles",story_prompt:$("#story-prompt").value.trim(),character_name:$("#character-name").value.trim(),character_description:$("#character-description").value.trim(),setting:$("#setting-select").value,tone:$("#tone-select").value,art_style:$("#style-select").value,panel_count:Number($("#panel-select").value),created_at:new Date().toISOString(),is_favorite:false,status:"complete"};
-    data.panels_json=JSON.stringify(makePanels(data));data.cover_image=data.setting==="Outer Space"?"space":data.setting==="Enchanted Forest"?"forest":"neon";
-    state.generating=true;$("#generate-button").disabled=true;$("#preview-empty").classList.add("hidden-force");$("#preview-result").classList.add("hidden-force");$("#generation-state").classList.remove("hidden-force");
-    const stages=["Finding the story arc","Composing scenes and dialogue","Finishing your comic"];
-    for(let i=0;i<=10;i++){const n=i*10;$("#generation-fill").style.width=n+"%";$("#generation-percent").textContent=n+"%";$("#generation-stage").textContent=stages[Math.min(2,Math.floor(i/4))];await new Promise(r=>setTimeout(r,180))}
-    $("#generation-stage").textContent="Saving to your Canva Sheet…";
+
+  async function refreshLibrary(){
     try {
-      const result=await window.dataSdk.create(data);
-      if(!result.isOk)throw new Error("save failed");
-      state.selected=data;$("#dashboard-result-title").textContent=data.title;$("#dashboard-result-summary").textContent=data.story_prompt.slice(0,130);$("#dashboard-result-meta").textContent=`${data.panel_count} panels · ${data.art_style}`;
-      $("#preview-result").classList.remove("hidden-force");notify("Your demo comic was created and saved.");go("preview");
-    }catch{notify("Your comic could not be saved. Please try again.",true)}
-    finally{state.generating=false;$("#generate-button").disabled=false;$("#generation-state").classList.add("hidden-force")}
+      const comics = await api.list();
+      state.comics = comics.map(toRecord);
+      renderLibrary();
+      if(state.selected?.__backendId){
+        const match = state.comics.find(x=>x.__backendId===state.selected.__backendId);
+        if(match) state.selected = match;
+      }
+    } catch (err) {
+      notify("Could not reach the ComicCraft backend. Is the server running?", true);
+    }
+  }
+
+  $("#create-form").addEventListener("submit", async e=>{
+    e.preventDefault();
+    if(state.generating||state.pending) return;
+    const form=e.currentTarget;
+    if(!form.reportValidity()) return;
+
+    const payload = {
+      prompt: $("#story-prompt").value.trim(),
+      character_name: $("#character-name").value.trim(),
+      character_description: $("#character-description").value.trim(),
+      setting: $("#setting-select").value,
+      tone: $("#tone-select").value,
+      art_style: $("#style-select").value,
+      panel_count: Number($("#panel-select").value)
+    };
+
+    state.generating=true;
+    $("#generate-button").disabled=true;
+    $("#preview-empty").classList.add("hidden-force");
+    $("#preview-result").classList.add("hidden-force");
+    $("#generation-state").classList.remove("hidden-force");
+    $("#generation-fill").style.width="0%";
+    $("#generation-percent").textContent="0%";
+    $("#generation-stage").textContent=STAGE_LABELS.CREATED;
+
+    try {
+      const {comic_id} = await api.create(payload);
+
+      // Poll the real generation pipeline until it settles.
+      let final=null;
+      for(let attempt=0; attempt<600; attempt++){
+        let st;
+        try { st = await api.status(comic_id) } catch { st = null }
+        if(st){
+          const pct = Number(st.progress||0);
+          $("#generation-fill").style.width=pct+"%";
+          $("#generation-percent").textContent=pct+"%";
+          $("#generation-stage").textContent = st.current_step || STAGE_LABELS[st.status] || "Working…";
+          if(st.status==="READY"||st.status==="FAILED"){ final=st; break }
+        }
+        await new Promise(r=>setTimeout(r,900));
+      }
+
+      if(!final || final.status!=="READY"){
+        notify("Comic generation failed. Please try again.", true);
+        $("#preview-empty").classList.remove("hidden-force");
+        return;
+      }
+
+      const comic = await api.get(comic_id);
+      const record = toRecord(comic);
+      state.selected = record;
+      await refreshLibrary();
+
+      $("#dashboard-result-title").textContent = record.title;
+      $("#dashboard-result-summary").textContent = (record.story_prompt||"").slice(0,130);
+      $("#dashboard-result-meta").textContent = `${record.panel_count} panels · ${record.art_style}`;
+      $("#preview-result").classList.remove("hidden-force");
+      notify("Your comic is ready!");
+      go("preview");
+    } catch (err) {
+      notify("Your comic could not be created: " + err.message, true);
+      $("#preview-empty").classList.remove("hidden-force");
+    } finally {
+      state.generating=false;
+      $("#generate-button").disabled=false;
+      $("#generation-state").classList.add("hidden-force");
+    }
   });
+
   function coverKind(record){return ["neon","space","forest"].includes(record.cover_image)?record.cover_image:"neon"}
   function renderLibrary(){
     const query=$("#library-search").value.trim().toLowerCase(),style=$("#filter-style").value,days=Number($("#filter-date").value),sort=$("#sort-comics").value;
@@ -567,18 +665,36 @@
     else if(e.target.closest(".cancel-delete"))card.querySelector(".delete-confirm").classList.add("hidden-force");
     else if(e.target.closest(".confirm-delete")){
       if(state.pending)return;state.pending=true;const button=e.target.closest("button");button.disabled=true;
-      try{const result=await window.dataSdk.delete(record);if(!result.isOk)throw Error();notify("Comic deleted.");if(state.selected?.__backendId===record.__backendId)state.selected=null}
+      try{await api.remove(record.__backendId);favorites.delete(record.__backendId);saveFavorites(favorites);notify("Comic deleted.");if(state.selected?.__backendId===record.__backendId)state.selected=null;await refreshLibrary()}
       catch{notify("Could not delete this comic. Please try again.",true)}
       finally{state.pending=false;button.disabled=false}
     }else if(e.target.closest(".favorite-action")){
       if(state.pending)return;state.pending=true;const button=e.target.closest("button");button.disabled=true;
-      try{const result=await window.dataSdk.update({...record,is_favorite:!record.is_favorite});if(!result.isOk)throw Error();notify(record.is_favorite?"Removed from favorites.":"Added to favorites.")}
+      try{favorites.has(record.__backendId)?favorites.delete(record.__backendId):favorites.add(record.__backendId);saveFavorites(favorites);record.is_favorite=favorites.has(record.__backendId);notify(record.is_favorite?"Added to favorites.":"Removed from favorites.");await refreshLibrary()}
       catch{notify("Could not update your favorite. Please try again.",true)}
       finally{state.pending=false;button.disabled=false}
     }
   });
   function panelsOf(record){try{const p=JSON.parse(record.panels_json);return Array.isArray(p)?p:[]}catch{return []}}
-  function progress(index,total){$("#reading-fill").style.width=Math.round((index+1)/total*100)+"%";$("#reading-label").textContent=`Reading panel ${index+1} of ${total}`}
+  // The backend stores dialogue as an array of {character,text} turns; the
+  // stored JSON may also contain an already-flattened string. Handle both.
+  function panelDialogue(panel){
+    const d=panel?.dialogue;
+    if(Array.isArray(d)) return d.map(t=>t?.text||"").filter(Boolean).join("  ")||"Onward!";
+    if(typeof d==="string"&&d.trim()) return d;
+    return "Onward!";
+  }
+  // Browser-loadable URL for a panel's generated artwork (same-origin API path).
+  function panelImageUrl(record,panel,index){
+    if(panel?.image_url){
+      const u=String(panel.image_url);
+      if(/^https?:\/\//i.test(u)||u.startsWith("data:")||u.startsWith("/")) return u;
+      return API_BASE+"/generated/"+u.replace(/\\/g,"/").split("/generated/").pop();
+    }
+    if(panel?.id) return `${API_BASE}/api/images/${encodeURIComponent(record.__backendId)}/panels/${encodeURIComponent(panel.id)}`;
+    return "";
+  }
+  function progress(index,total){state.readerIndex=index;$("#reading-fill").style.width=Math.round((index+1)/total*100)+"%";$("#reading-label").textContent=`Reading panel ${index+1} of ${total}`}
   function renderReader(){
     const record=state.selected;if(!record)return;const panels=panelsOf(record);
     $("#reader-title").textContent=record.title;
@@ -590,9 +706,12 @@
       node.querySelector(".panel-number").textContent=`PANEL ${String(i+1).padStart(2,"0")}`;
       node.querySelector(".panel-title").textContent=panel.title||`Scene ${i+1}`;
       node.querySelector(".panel-scene").textContent=panel.scene||"The story continues.";
-      node.querySelector(".panel-dialogue").textContent=panel.dialogue||"Onward!";
+      node.querySelector(".panel-dialogue").textContent=panelDialogue(panel);
       node.querySelector(".panel-narration").textContent=panel.narration||"The adventure continues.";
-      node.querySelectorAll(".panel-image").forEach((img,n)=>img.classList.toggle("hidden-force",n!==i%3));
+      node.querySelectorAll(".panel-image").forEach((img,n)=>{
+        img.classList.toggle("hidden-force",n!==0);
+        if(n===0) img.src=panelImageUrl(record,panel,i);
+      });
       node.querySelector(".next-panel").classList.toggle("hidden-force",i===panels.length-1);
       host.appendChild(node);
       const b=document.createElement("button");b.type="button";b.className="secondary-btn px-3 py-2";b.textContent=`Panel ${i+1}`;b.addEventListener("click",()=>{node.scrollIntoView({behavior:"smooth",block:"center"});progress(i,panels.length)});navigator.appendChild(b);
@@ -601,38 +720,96 @@
   }
   $("#reader-panels").addEventListener("click",e=>{const button=e.target.closest(".next-panel");if(!button)return;const index=Number(button.closest("[data-panel-index]").dataset.panelIndex)+1;$("#comic-panel-"+index)?.scrollIntoView({behavior:"smooth",block:"center"});progress(index,panelsOf(state.selected).length)});
   $("#regenerate-button").addEventListener("click",()=>{if(!state.selected)return;$("#story-prompt").value=state.selected.story_prompt;$("#character-name").value=state.selected.character_name;$("#character-description").value=state.selected.character_description;$("#setting-select").value=state.selected.setting;$("#tone-select").value=state.selected.tone;$("#style-select").value=state.selected.art_style;$("#panel-select").value=String(state.selected.panel_count);go("dashboard");notify("Your previous choices are ready. Generate to create a new version.")});
+  // --- Real per-panel regeneration -----------------------------------------
+  // Re-requests a single panel from the backend with a free-text instruction.
+  async function regenerateCurrentPanel(){
+    const record=state.selected;if(!record||state.pending)return;
+    const panels=panelsOf(record);
+    if(!panels.length){notify("This comic has no panels to redraw yet.",true);return}
+    const panel=panels[Math.max(0,Number(state.readerIndex||0))];
+    if(!panel?.id){notify("This panel cannot be regenerated.",true);return}
+    const instruction=window.prompt("How should this panel be redrawn? (e.g. \"make the sky sunset orange\")","");
+    if(instruction===null)return;
+    if(!instruction.trim()){notify("Add a short instruction first.",true);return}
+    if(state.pending)return;state.pending=true;
+    const button=$("#regenerate-panel-button");const original=button.textContent;
+    button.disabled=true;button.textContent="Redrawing…";
+    try{
+      await api.regeneratePanel(record.__backendId,panel.id,instruction.trim());
+      const comic=await api.get(record.__backendId);
+      const fresh=toRecord(comic);state.selected=fresh;
+      const idx=state.comics.findIndex(x=>x.__backendId===record.__backendId);
+      if(idx>=0)state.comics[idx]=fresh;
+      renderReader();renderLibrary();
+      notify("Panel redrawn.");
+    }catch(err){notify("Could not redraw that panel: "+err.message,true)}
+    finally{state.pending=false;button.disabled=false;button.textContent=original}
+  }
+  $("#regenerate-panel-button")?.addEventListener("click",regenerateCurrentPanel);
+  // --- Continue the story with new panels ----------------------------------
+  async function continueStory(){
+    const record=state.selected;if(!record||state.pending)return;
+    const note=window.prompt("Where should the story go next? (optional — press OK to continue as-is)","");
+    if(note===null)return;
+    if(state.pending)return;state.pending=true;
+    const button=$("#continue-button");const original=button.textContent;
+    button.disabled=true;button.textContent="Writing…";
+    try{
+      await api.continueComic(record.__backendId,note.trim()||undefined,undefined);
+      let st=null;
+      for(let attempt=0;attempt<600;attempt++){
+        try{st=await api.status(record.__backendId)}catch{st=null}
+        if(st&&(st.status==="READY"||st.status==="FAILED"))break;
+        await new Promise(r=>setTimeout(r,900));
+      }
+      if(!st||st.status!=="READY"){notify("Could not continue this story.",true);return}
+      const comic=await api.get(record.__backendId);
+      const fresh=toRecord(comic);state.selected=fresh;
+      const idx=state.comics.findIndex(x=>x.__backendId===record.__backendId);
+      if(idx>=0)state.comics[idx]=fresh;
+      renderReader();renderLibrary();
+      notify("New panels added to your comic.");
+    }catch(err){notify("Could not continue this story: "+err.message,true)}
+    finally{state.pending=false;button.disabled=false;button.textContent=original}
+  }
+  $("#continue-button")?.addEventListener("click",continueStory);
   $("#share-button").addEventListener("click",async()=>{if(!state.selected)return;const text=`${state.selected.title} — ${state.selected.story_prompt}`;try{await navigator.clipboard.writeText(text);notify("Comic title and story prompt copied for sharing.")}catch{notify("Clipboard unavailable here. You can share the downloaded PDF instead.",true)}});
   async function exportPdf(button){
-    if(!state.selected||button.disabled)return;const record=state.selected;button.disabled=true;const original=button.textContent;button.textContent="Preparing PDF…";
+    if(!state.selected || button.disabled) return;
+    const record = state.selected;
+    button.disabled = true;
+    const original = button.textContent;
+    button.textContent = "Preparing PDF…";
     try {
-      if(!window.jspdf?.jsPDF)throw Error("PDF library unavailable");
-      const pdf=new window.jspdf.jsPDF({unit:"mm",format:"a4"}),panels=panelsOf(record),margin=18,width=174;
-      pdf.setFillColor(15,23,42);pdf.rect(0,0,210,297,"F");pdf.setTextColor(255,217,61);pdf.setFontSize(12);pdf.text("COMICCRAFT  /  STORY EDITION",margin,23);
-      pdf.setTextColor(248,250,252);pdf.setFontSize(25);let titleLines=pdf.splitTextToSize(record.title,width);pdf.text(titleLines,margin,43);
-      let y=43+titleLines.length*11;pdf.setFontSize(10);pdf.setTextColor(169,184,207);pdf.text(`${record.art_style}  |  ${panels.length} panels  |  ${dateLabel(record.created_at)}`,margin,y+5);
-      y+=18;pdf.setDrawColor(108,99,255);pdf.line(margin,y,192,y);y+=12;
-      for(let i=0;i<panels.length;i++){
-        const p=panels[i],scene=pdf.splitTextToSize(p.scene||"",width),dialogue=pdf.splitTextToSize(`"${p.dialogue||""}"`,width),narration=pdf.splitTextToSize(p.narration||"",width);
-        const need=20+(scene.length+dialogue.length+narration.length)*5.2;
-        if(y+need>278){pdf.addPage();pdf.setFillColor(15,23,42);pdf.rect(0,0,210,297,"F");y=22}
-        pdf.setTextColor(255,217,61);pdf.setFontSize(13);pdf.text(`PANEL ${i+1}  /  ${p.title||"Scene"}`,margin,y);y+=9;
-        pdf.setFontSize(10);pdf.setTextColor(248,250,252);pdf.text(scene,margin,y);y+=scene.length*5.2+3;
-        pdf.setTextColor(255,175,175);pdf.text(dialogue,margin,y);y+=dialogue.length*5.2+3;
-        pdf.setTextColor(169,184,207);pdf.text(narration,margin,y);y+=narration.length*5.2+12;
-      }
-      await new Promise(r=>setTimeout(r,650));
-      pdf.save((record.title.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"comic")+".pdf");
-      $("#export-title").textContent=record.title;$("#export-details").textContent=`${panels.length} panels · PDF · Story text edition`;
-      go("success");notify("Your PDF download has started.");
-    }catch{notify("PDF export could not start. Please try again.",true)}
-    finally{button.disabled=false;button.textContent=original}
+      // The backend renders the PDF (with the generated artwork) via ReportLab.
+      await api.exportPdf(record.__backendId);
+      const link = document.createElement("a");
+      link.href = api.downloadUrl(record.__backendId);
+      link.download = "";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+      $("#export-title").textContent = record.title;
+      $("#export-details").textContent =
+        `${record.panel_count} panels · PDF · Illustrated edition`;
+      go("success");
+      notify("Your PDF download has started.");
+    } catch (err) {
+      notify("PDF export failed: " + err.message, true);
+    } finally {
+      button.disabled = false;
+      button.textContent = original;
+    }
   }
+
   $("#preview-download").addEventListener("click",e=>exportPdf(e.currentTarget));
   $("#download-again").addEventListener("click",e=>exportPdf(e.currentTarget));
   $("#settings-form").addEventListener("submit",e=>{e.preventDefault();state.settings={theme:$("#theme-select").value,style:$("#preferred-style").value,notifications:$("#notification-toggle").checked};document.body.classList.toggle("light-mode",state.settings.theme==="light");$("#style-select").value=state.settings.style;$("#settings-feedback").textContent="Preferences saved for this visit.";notify("Preferences saved for this visit.",true)});
   $("#enter-demo").addEventListener("click",()=>{const name=$("#demo-name").value.trim();go("dashboard");notify(name?`Welcome to the demo, ${name.slice(0,40)}!`:"Welcome to the ComicCraft demo!")});
   if(window.lucide)lucide.createIcons();
-  startData();
+  // First-run load: populate the library from the backend (non-fatal if it is down).
+  refreshLibrary();
 })();
 </script>
  
