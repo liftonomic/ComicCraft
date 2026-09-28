@@ -23,7 +23,7 @@ REPO_ROOT = BACKEND_DIR.parent
 FRONTEND_DIR = REPO_ROOT / "frontend"
 
 #: Accepted values for the ``IMAGE_PROVIDER`` setting.
-IMAGE_PROVIDERS = ("stable_diffusion", "mock")
+IMAGE_PROVIDERS = ("gemini", "huggingface", "stable_diffusion", "mock")
 
 
 class Settings(BaseSettings):
@@ -47,8 +47,24 @@ class Settings(BaseSettings):
     gemini_api_key: str = ""
     gemini_model: str = "gemini-2.0-flash"
 
-    # Image generation provider selection. One of: stable_diffusion, mock.
-    image_provider: str = "stable_diffusion"
+    # Image generation provider selection.
+    # One of: gemini, huggingface, stable_diffusion, mock.
+    image_provider: str = "gemini"
+
+    # Gemini image model ("Nano Banana"). Reuses gemini_api_key.
+    gemini_image_model: str = "gemini-2.5-flash-image"
+    # e.g. 1:1, 3:2, 2:3, 4:3, 16:9. Empty = model default.
+    gemini_image_aspect_ratio: str = "4:3"
+
+    # Locally downloaded Hugging Face diffusers model (folder or single file).
+    hf_model_path: str = ""
+    hf_device: str = "auto"  # auto | cuda | mps | cpu
+    hf_dtype: str = "auto"  # auto | float16 | bfloat16 | float32
+    hf_single_file_arch: str = "sdxl"  # sd15 | sdxl (single-file checkpoints only)
+    hf_width: int = 768
+    hf_height: int = 512
+    hf_steps: int = 28
+    hf_guidance_scale: float = 7.0
 
     # AUTOMATIC1111 / compatible Stable Diffusion WebUI endpoint.
     sd_api_url: str = "http://127.0.0.1:7860"

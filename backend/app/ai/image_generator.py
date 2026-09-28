@@ -8,18 +8,25 @@ interface without touching the rest of the codebase.
 
 Providers:
 
+* ``GeminiImageGenerator`` — Google "Nano Banana" (``gemini-2.5-flash-image``).
+* ``HuggingFaceImageGenerator`` — a locally downloaded diffusers model
+  (``HF_MODEL_PATH``), run in-process with PyTorch.
 * ``StableDiffusionImageGenerator`` — POST to ``SD_API_URL/sdapi/v1/txt2img``.
 * ``MockImageGenerator`` — deterministic offline PNGs for dev and tests.
 """
 
 from __future__ import annotations
 
+import asyncio
 import base64
+import io
 import logging
+import threading
 import time
 import uuid
 from abc import ABC, abstractmethod
 from pathlib import Path
+from typing import Any
 
 import httpx
 from PIL import Image, ImageDraw
@@ -56,6 +63,216 @@ def _save_png(image_bytes: bytes) -> Path:
     return path
 
 
+NEGATIVE_PROMPT = (
+    "text, words, speech bubble, watermark, logo, low quality, blurry, deformed"
+)
+
+
+def _save_image_bytes(image_bytes: bytes) -> Path:
+    """Normalise arbitrary image bytes (PNG/JPEG/WebP) to PNG and save."""
+    try:
+        img = Image.open(io.BytesIO(image_bytes))
+        buf = io.BytesIO()
+        img.convert("RGB").save(buf, format="PNG")
+    except Exception as exc:  # noqa: BLE001
+        raise ImageGenerationError("Could not decode image response") from exc
+    return _save_png(buf.getvalue())
+
+
+class GeminiImageGenerator(ImageGenerator):
+    """Provider for Google's Gemini image model ("Nano Banana").
+
+    Uses ``google-genai`` with ``GEMINI_API_KEY`` and ``GEMINI_IMAGE_MODEL``
+    (default ``gemini-2.5-flash-image``).
+    """
+
+    def __init__(self, settings: Settings) -> None:
+        self._settings = settings
+        self._client = None
+
+    def _lazy_client(self):
+        if self._client is None:
+            if not self._settings.gemini_api_key:
+                raise ImageGenerationError(
+                    "GEMINI_API_KEY is required for IMAGE_PROVIDER=gemini",
+                    code="MISSING_API_KEY",
+                )
+            from google import genai
+
+            self._client = genai.Client(api_key=self._settings.gemini_api_key)
+        return self._client
+
+    def _generate_sync(self, prompt: str) -> bytes:
+        from google.genai import types
+
+        s = self._settings
+        config: dict[str, Any] = {"response_modalities": ["IMAGE"]}
+        if s.gemini_image_aspect_ratio:
+            config["image_config"] = types.ImageConfig(
+                aspect_ratio=s.gemini_image_aspect_ratio
+            )
+        response = self._lazy_client().models.generate_content(
+            model=s.gemini_image_model,
+            contents=f"{prompt}\n\nAvoid: {NEGATIVE_PROMPT}.",
+            config=types.GenerateContentConfig(**config),
+        )
+        for candidate in response.candidates or []:
+            content = getattr(candidate, "content", None)
+            for part in getattr(content, "parts", None) or []:
+                inline = getattr(part, "inline_data", None)
+                if inline is not None and inline.data:
+                    data = inline.data
+                    return base64.b64decode(data) if isinstance(data, str) else data
+        raise ImageGenerationError(
+            "Gemini returned no image (possibly blocked by safety filters)",
+            code="EMPTY_RESPONSE",
+        )
+
+    async def generate(self, *, prompt: str, style: str) -> Path:
+        try:
+            image_bytes = await asyncio.to_thread(self._generate_sync, prompt)
+        except ImageGenerationError:
+            raise
+        except Exception as exc:  # noqa: BLE001
+            logger.error("Gemini image request failed: %s", exc)
+            raise ImageGenerationError(str(exc)) from exc
+        return _save_image_bytes(image_bytes)
+
+    async def is_available(self) -> bool:
+        return bool(self._settings.gemini_api_key)
+
+
+# The diffusers pipeline is expensive to load, so keep one per process.
+_HF_PIPELINE: Any = None
+_HF_PIPELINE_KEY: tuple | None = None
+_HF_LOCK = threading.Lock()
+
+
+class HuggingFaceImageGenerator(ImageGenerator):
+    """Provider for a manually downloaded Hugging Face diffusers model.
+
+    ``HF_MODEL_PATH`` may be either:
+
+    * a diffusers model folder (contains ``model_index.json``), e.g. from
+      ``huggingface-cli download stabilityai/sdxl-turbo --local-dir ...``, or
+    * a single ``.safetensors`` / ``.ckpt`` checkpoint file (set
+      ``HF_SINGLE_FILE_ARCH`` to ``sd15`` or ``sdxl``).
+
+    Requires ``torch`` and ``diffusers`` (see requirements-hf.txt).
+    """
+
+    def __init__(self, settings: Settings) -> None:
+        self._settings = settings
+
+    def _model_path(self) -> Path:
+        raw = self._settings.hf_model_path
+        if not raw:
+            raise ImageGenerationError(
+                "HF_MODEL_PATH is required for IMAGE_PROVIDER=huggingface",
+                code="MISSING_MODEL_PATH",
+            )
+        path = Path(raw).expanduser()
+        if not path.exists():
+            raise ImageGenerationError(
+                f"HF_MODEL_PATH does not exist: {path}", code="MISSING_MODEL_PATH"
+            )
+        return path
+
+    def _device(self, torch) -> str:
+        device = self._settings.hf_device
+        if device != "auto":
+            return device
+        if torch.cuda.is_available():
+            return "cuda"
+        mps = getattr(torch.backends, "mps", None)
+        if mps is not None and mps.is_available():
+            return "mps"
+        return "cpu"
+
+    def _load_pipeline(self):
+        global _HF_PIPELINE, _HF_PIPELINE_KEY
+        s = self._settings
+        path = self._model_path()
+        key = (str(path), s.hf_device, s.hf_dtype, s.hf_single_file_arch)
+        if _HF_PIPELINE is not None and _HF_PIPELINE_KEY == key:
+            return _HF_PIPELINE
+        try:
+            import torch
+            from diffusers import (
+                AutoPipelineForText2Image,
+                StableDiffusionPipeline,
+                StableDiffusionXLPipeline,
+            )
+        except ImportError as exc:
+            raise ImageGenerationError(
+                "IMAGE_PROVIDER=huggingface needs torch + diffusers: "
+                "pip install -r requirements-hf.txt",
+                code="MISSING_DEPENDENCY",
+            ) from exc
+
+        device = self._device(torch)
+        dtype_name = s.hf_dtype
+        if dtype_name == "auto":
+            dtype_name = "float32" if device == "cpu" else "float16"
+        dtype = getattr(torch, dtype_name)
+
+        logger.info(
+            "Loading Hugging Face model from %s on %s (%s)", path, device, dtype_name
+        )
+        if path.is_file():
+            cls = (
+                StableDiffusionXLPipeline
+                if s.hf_single_file_arch == "sdxl"
+                else StableDiffusionPipeline
+            )
+            pipe = cls.from_single_file(str(path), torch_dtype=dtype)
+        else:
+            pipe = AutoPipelineForText2Image.from_pretrained(
+                str(path), torch_dtype=dtype, local_files_only=True
+            )
+        pipe = pipe.to(device)
+        if hasattr(pipe, "set_progress_bar_config"):
+            pipe.set_progress_bar_config(disable=True)
+        _HF_PIPELINE, _HF_PIPELINE_KEY = pipe, key
+        return pipe
+
+    def _generate_sync(self, prompt: str) -> bytes:
+        s = self._settings
+        kwargs: dict[str, Any] = {
+            "prompt": prompt,
+            "width": s.hf_width,
+            "height": s.hf_height,
+            "num_inference_steps": s.hf_steps,
+            "guidance_scale": s.hf_guidance_scale,
+        }
+        if s.hf_guidance_scale > 1.0:
+            kwargs["negative_prompt"] = NEGATIVE_PROMPT
+        # One load/generation at a time on the shared GPU pipeline.
+        with _HF_LOCK:
+            pipe = self._load_pipeline()
+            image = pipe(**kwargs).images[0]
+        buf = io.BytesIO()
+        image.save(buf, format="PNG")
+        return buf.getvalue()
+
+    async def generate(self, *, prompt: str, style: str) -> Path:
+        try:
+            image_bytes = await asyncio.to_thread(self._generate_sync, prompt)
+        except ImageGenerationError:
+            raise
+        except Exception as exc:  # noqa: BLE001
+            logger.error("Hugging Face generation failed: %s", exc)
+            raise ImageGenerationError(str(exc)) from exc
+        return _save_png(image_bytes)
+
+    async def is_available(self) -> bool:
+        try:
+            self._model_path()
+        except ImageGenerationError:
+            return False
+        return True
+
+
 class StableDiffusionImageGenerator(ImageGenerator):
     """Provider for a local/remote AUTOMATIC1111 (or compatible) WebUI.
 
@@ -88,10 +305,7 @@ class StableDiffusionImageGenerator(ImageGenerator):
             "sampler_name": s.sd_sampler_name,
             "seed": -1,
             "batch_size": 1,
-            "negative_prompt": (
-                "text, words, speech bubble, watermark, logo, low quality, "
-                "blurry, deformed"
-            ),
+            "negative_prompt": NEGATIVE_PROMPT,
         }
 
     async def generate(self, *, prompt: str, style: str) -> Path:
@@ -180,6 +394,10 @@ def get_image_generator(settings: Settings) -> ImageGenerator:
     """Return the configured image provider instance."""
     if settings.image_provider == "mock":
         return MockImageGenerator(settings)
+    if settings.image_provider == "gemini":
+        return GeminiImageGenerator(settings)
+    if settings.image_provider == "huggingface":
+        return HuggingFaceImageGenerator(settings)
     if settings.image_provider == "stable_diffusion":
         return StableDiffusionImageGenerator(settings)
     raise ImageGenerationError(
