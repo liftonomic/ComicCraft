@@ -12,3 +12,9 @@ Pillow
 reportlab
 
 aiofiles
+diffusers>=0.36
+transformers>=4.51
+accelerate
+gguf>=0.10
+huggingface_hub
+safetensors

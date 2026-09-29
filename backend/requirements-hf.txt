@@ -1,9 +1,0 @@
-# Optional: only needed for IMAGE_PROVIDER=huggingface.
-# For NVIDIA GPUs install a CUDA build of torch first, e.g.:
-#   pip install torch --index-url https://download.pytorch.org/whl/cu124
--r requirements.txt
-torch
-diffusers
-transformers
-accelerate
-safetensors

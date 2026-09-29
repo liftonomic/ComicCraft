@@ -46,7 +46,7 @@ pnpm-debug.log*
 backend/generated/
 *.log
 logs/
-
+model/
 # --- Editors & OS -----------------------------------------------------------
 .vscode/*
 !.vscode/extensions.json

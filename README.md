@@ -68,13 +68,12 @@ anything blank and ComicCraft uses its built-in offline default.
 | Variable | Default | What it does |
 |---|---|---|
 | `GEMINI_API_KEY` | *(empty)* | Google Gemini key for story/outline/panel copy. Empty ⇒ deterministic `MockGeminiClient`. |
-| `GEMINI_MODEL` | `gemini-2.0-flash` | Model used for every story call. |
-| `IMAGE_PROVIDER` | `mock` | `mock` (offline PNGs) or `stable_diffusion` (real images). |
-| `SD_API_URL` | `http://127.0.0.1:7860` | AUTOMATIC1111-compatible WebUI endpoint. |
-| `SD_API_AUTH` | *(empty)* | WebUI basic auth as `user:password`. |
-| `SD_WIDTH` / `SD_HEIGHT` | `768` / `512` | txt2img output size. |
-| `SD_STEPS` / `SD_CFG_SCALE` | `28` / `7.0` | txt2img quality vs. speed. |
-| `SD_SAMPLER_NAME` | `DPM++ 2M Karras` | txt2img sampler. |
+| `GEMINI_MODEL` | `gemini-3.5-flash-lite` | Model used for every story call. |
+| `IMAGE_PROVIDER` | `zimage` | `zimage` (Z-Image-Turbo on CPU) or `mock` (offline PNGs). |
+| `ZIMAGE_GGUF_PATH` | `backend/model/z-image-turbo-Q4_0.gguf` | GGUF transformer; auto-downloaded if missing. |
+| `ZIMAGE_BASE_REPO` | `Tongyi-MAI/Z-Image-Turbo` | Source of text encoder / VAE / scheduler. |
+| `ZIMAGE_WIDTH` / `ZIMAGE_HEIGHT` | `512` / `512` | Output size (CPU cost scales with pixels). |
+| `ZIMAGE_STEPS` / `ZIMAGE_THREADS` | `9` / `0` | Steps; torch CPU threads (0 = default). |
 | `MIN_PANEL_COUNT` / `MAX_PANEL_COUNT` | `1` / `20` | Accepted `panel_count` range. |
 | `STORAGE_BASE` | `…\backend\generated` | **Must be absolute** (see gotchas). |
 | `CORS_ORIGINS` | `["*"]` | JSON array. Only matters if you split origins. |
@@ -190,11 +189,11 @@ A generated panel object looks like:
 **Images** — `IMAGE_PROVIDER` selects the generator:
 
 * `mock` → `MockImageGenerator`, a real PNG drawn with Pillow (no service)
-* `stable_diffusion` → `StableDiffusionImageGenerator`, `POST {SD_API_URL}/sdapi/v1/txt2img`
+* `zimage` → `ZImageGenerator`, Z-Image-Turbo (GGUF Q4_0) run in-process on the CPU
 
-To use real images, launch an AUTOMATIC1111-compatible WebUI with the API
-enabled (`--api`) and set `IMAGE_PROVIDER=stable_diffusion`. Any other value
-raises `ValueError` at startup.
+For real images run `pip install -r backend/requirements-zimage.txt` (CPU torch
+first, see the file). The first generation downloads the base model (~10+ GB)
+and loads it once per process. Any other value raises `ValueError` at startup.
 
 ---
 

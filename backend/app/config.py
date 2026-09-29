@@ -23,7 +23,7 @@ REPO_ROOT = BACKEND_DIR.parent
 FRONTEND_DIR = REPO_ROOT / "frontend"
 
 #: Accepted values for the ``IMAGE_PROVIDER`` setting.
-IMAGE_PROVIDERS = ("gemini", "huggingface", "stable_diffusion", "mock")
+IMAGE_PROVIDERS = ("zimage", "mock")
 
 
 class Settings(BaseSettings):
@@ -45,39 +45,20 @@ class Settings(BaseSettings):
 
     # --- AI providers -----------------------------------------------------
     gemini_api_key: str = ""
-    gemini_model: str = "gemini-2.0-flash"
+    gemini_model: str = "gemini-3.5-flash-lite"
 
-    # Image generation provider selection.
-    # One of: gemini, huggingface, stable_diffusion, mock.
-    image_provider: str = "gemini"
+    # Image generation provider selection: zimage | mock.
+    image_provider: str = "zimage"
 
-    # Gemini image model ("Nano Banana"). Reuses gemini_api_key.
-    gemini_image_model: str = "gemini-2.5-flash-image"
-    # e.g. 1:1, 3:2, 2:3, 4:3, 16:9. Empty = model default.
-    gemini_image_aspect_ratio: str = "4:3"
-
-    # Locally downloaded Hugging Face diffusers model (folder or single file).
-    hf_model_path: str = ""
-    hf_device: str = "auto"  # auto | cuda | mps | cpu
-    hf_dtype: str = "auto"  # auto | float16 | bfloat16 | float32
-    hf_single_file_arch: str = "sdxl"  # sd15 | sdxl (single-file checkpoints only)
-    hf_width: int = 768
-    hf_height: int = 512
-    hf_steps: int = 28
-    hf_guidance_scale: float = 7.0
-
-    # AUTOMATIC1111 / compatible Stable Diffusion WebUI endpoint.
-    sd_api_url: str = "http://127.0.0.1:7860"
-
-    # Optional basic-auth for the Stable Diffusion WebUI (user:pass). Empty if none.
-    sd_api_auth: str = ""
-
-    # txt2img tuning defaults.
-    sd_width: int = 768
-    sd_height: int = 512
-    sd_steps: int = 28
-    sd_cfg_scale: float = 7.0
-    sd_sampler_name: str = "DPM++ 2M Karras"
+    # Z-Image-Turbo (CPU). Only the transformer comes from the GGUF file; the
+    # text encoder / VAE / scheduler are pulled from the base repo.
+    zimage_gguf_path: str = str(BACKEND_DIR / "model" / "z-image-turbo-Q4_0.gguf")
+    zimage_gguf_repo: str = "unsloth/Z-Image-Turbo-GGUF"
+    zimage_base_repo: str = "Tongyi-MAI/Z-Image-Turbo"
+    zimage_width: int = 512
+    zimage_height: int = 512
+    zimage_steps: int = 9
+    zimage_threads: int = 0  # 0 = torch default
 
     # --- Comic generation -------------------------------------------------
     min_panel_count: int = 1

@@ -42,7 +42,7 @@ def create_app() -> FastAPI:
         version=settings.app_version,
         description=(
             "ComicCraft backend API — generate AI comic stories using Gemini "
-            "for the narrative and a pluggable image pipeline (Gemini Nano Banana / Hugging Face / Stable Diffusion) for art."
+            "for the narrative and a local Z-Image-Turbo image pipeline for art."
         ),
         lifespan=lifespan,
     )

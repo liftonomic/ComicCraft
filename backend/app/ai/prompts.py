@@ -74,6 +74,20 @@ CHARACTER_SCHEMA: dict[str, Any] = {
     },
     "required": ["name"],
 }
+
+#: System default appended to every user story prompt so Gemini keeps the
+#: story (and therefore the image prompts) short and on-topic.
+STORY_DIRECTIVE = (
+    "Give simple too short story for this. No explanation or anything just "
+    "short simple, within 2 lines"
+)
+
+
+def with_story_directive(prompt: str) -> str:
+    """Wrap the user's prompt with :data:`STORY_DIRECTIVE`."""
+    return f'"{prompt}"\n\n{STORY_DIRECTIVE}'
+
+
 def _system_instruction() -> str:
     return (
         "You are a professional comic book writer and artist. You write "
@@ -92,7 +106,7 @@ def character_profile_prompt(
     """Ask Gemini for a detailed, structured character profile."""
     return (
         "Create a detailed character profile for the comic described below.\n\n"
-        f"Story prompt: {prompt}\n"
+        f"Story prompt: {with_story_directive(prompt)}\n"
         f"Character name: {character_name or 'not specified (invent one)'}\n"
         f"Character description: {character_description or 'not specified'}\n\n"
         "Return JSON with fields: name, species, appearance, personality, "
@@ -114,7 +128,7 @@ def comic_outline_prompt(
     """Ask Gemini for the full structured comic (title, character, panels)."""
     return (
         f"Write a {panel_count}-panel comic script.\n\n"
-        f"Story prompt: {prompt}\n"
+        f"Story prompt: {with_story_directive(prompt)}\n"
         f"Setting: {setting or 'invent a fitting setting'}\n"
         f"Tone: {tone or 'adventure'}\n"
         f"Art style: {art_style or 'anime'}\n"
@@ -125,8 +139,8 @@ def comic_outline_prompt(
         "- Provide a consistent 'character' object with a stable appearance.\n"
         "- Provide exactly the requested number of 'panels'. Each panel has: "
         "number, title, scene (what is drawn), narration, dialogue (array of "
-        "{character, text}), and a detailed 'image_prompt' describing the "
-        "panel as a standalone illustration.\n"
+        "{character, text}), and a short 'image_prompt' (under 40 words) "
+        "that directly depicts the story prompt as a standalone illustration.\n"
         "- Make the story engaging and coherent across panels."
     )
 def panel_regeneration_prompt(
